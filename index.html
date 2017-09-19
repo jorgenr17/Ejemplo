@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF8">
+    <link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body >      
+<script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDCYmNnJIVEPcWKdd8CZJUivYdV2MVKpMM",
+    authDomain: "dbejemplo.firebaseapp.com",
+    databaseURL: "https://dbejemplo.firebaseio.com",
+    projectId: "dbejemplo",
+    storageBucket: "",
+    messagingSenderId: "731706199060"
+  };
+</script>
+        <div id="elemento">   
+            <h1>Actividades del Plan de Mejoramiento</h1>
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Agregar Actividad</label>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary" style="margin-top: 10px" >Actividad</button>
+                        </span>
+                        <input class="form-control"  v-model="nuevaActividad" style="margin-top: 10px"></input>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary" style="margin-top: 10px">Descripción</button>
+                        </span>
+                    <input class="form-control" v-model="nuevaDescripcion" style="margin-top: 10px"></input>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary" style="margin-top: 10px">Responsable</button>
+                        </span>
+                    <input v-model="nuevoResponsable" class="form-control" style="margin-top: 10px"></input>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-secondary" style="margin-top: 10px">Tareas</button>
+                    </span>
+                <input v-model="nuevaTarea" class="form-control" style="margin-top: 10px"></input>
+                </div>
+            </div>
+        </div> 
+        <button type="button" class="btn btn-primary" @click="agregarActividad(nuevaActividad, 
+        nuevoResponsable, nuevaDescripcion, nuevaTarea)" >Agregar Actividad</button>
+       </div>
+      </form>   
+    <H2 align="center">Actividades</H2>
+    <table class="table">
+        <td scope="row" align="center">Actividad</td>
+            <td scope="row" align="center">Descripción</td>
+                <td scope="row" align="center">Opciones</td>
+                    <tr v-for="(actividades, index) in datos">
+                    <td scope="row" align="center">{{actividades.Actividad}}</td>
+                    <td scope="row" align="center"><small>{{actividades.descripcion}}</small></td>
+                    <td> <button  @click="editar(actividades)">Editar</button>
+                    <button @click="eliminarNombre(index)">eliminar</button>
+                    </td>
+                    </tr>
+            </table>
+            <pre>{{datos | json}}</pre>
+               <!-- <ul>
+                    <li >
+                        <h4>{{Actividad}}</h4>
+                        <small><li>{{datos.responsables}}</li></small>
+                        <button @click="mostrar()">Ver Responsable</button>
+                    </li>
+                </ul>-->
+                <!--<ul v-for="(actividades, index) in actividades">
+                    <li>
+                        {{actividades.actividad}}
+                        <button @click="eliminarNombre(index)">eliminar</button>
+                        <div v-if="ocultar" v-for="(responsable, index) in responsable" >
+                          <h3>{{responsable.nombre}}</h3>  
+                        </div>
+                        <button @click="mostrar()">Ver Responsable</button>
+                    </li>
+                </ul>-->
+                <!--<pre>{{$data}}</pre>-->   
+            </div>
+        <script src="./vue.js"></script>
+        <script src="./app.js"></script>      
+    </body>
+</html>
