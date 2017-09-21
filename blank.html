@@ -9,7 +9,7 @@
 
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Ejemplo Plan de Mejoramiento</title>
+    <title>SB Admin - Start Bootstrap Template</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,22 +26,10 @@
   </head>
 
   <body class="fixed-nav sticky-footer bg-dark" id="page-top">
-    <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDCYmNnJIVEPcWKdd8CZJUivYdV2MVKpMM",
-    authDomain: "dbejemplo.firebaseapp.com",
-    databaseURL: "https://dbejemplo.firebaseio.com",
-    projectId: "dbejemplo",
-    storageBucket: "",
-    messagingSenderId: "731706199060"
-  };
-</script>
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-      <a class="navbar-brand" href="#">Plan de Mejoramiento</a>
+      <a class="navbar-brand" href="#">Start Bootstrap</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -146,95 +134,140 @@
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle mr-lg-2" href="#" id="messagesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-fw fa-envelope"></i>
+              <span class="d-lg-none">Messages
+                <span class="badge badge-pill badge-primary">12 New</span>
+              </span>
+              <span class="new-indicator text-primary d-none d-lg-block">
+                <i class="fa fa-fw fa-circle"></i>
+                <span class="number">12</span>
+              </span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="messagesDropdown">
+              <h6 class="dropdown-header">New Messages:</h6>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">
+                <strong>David Miller</strong>
+                <span class="small float-right text-muted">11:21 AM</span>
+                <div class="dropdown-message small">Hey there! This new version of SB Admin is pretty awesome! These messages clip off when they reach the end of the box so they don't overflow over to the sides!</div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">
+                <strong>Jane Smith</strong>
+                <span class="small float-right text-muted">11:21 AM</span>
+                <div class="dropdown-message small">I was wondering if you could meet for an appointment at 3:00 instead of 4:00. Thanks!</div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">
+                <strong>John Doe</strong>
+                <span class="small float-right text-muted">11:21 AM</span>
+                <div class="dropdown-message small">I've sent the final files over to you for review. When you're able to sign off of them let me know and we can discuss distribution.</div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item small" href="#">
+                View all messages
+              </a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle mr-lg-2" href="#" id="alertsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-fw fa-bell"></i>
+              <span class="d-lg-none">Alerts
+                <span class="badge badge-pill badge-warning">6 New</span>
+              </span>
+              <span class="new-indicator text-warning d-none d-lg-block">
+                <i class="fa fa-fw fa-circle"></i>
+                <span class="number">6</span>
+              </span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="alertsDropdown">
+              <h6 class="dropdown-header">New Alerts:</h6>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">
+                <span class="text-success">
+                  <strong>
+                    <i class="fa fa-long-arrow-up"></i>
+                    Status Update</strong>
+                </span>
+                <span class="small float-right text-muted">11:21 AM</span>
+                <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">
+                <span class="text-danger">
+                  <strong>
+                    <i class="fa fa-long-arrow-down"></i>
+                    Status Update</strong>
+                </span>
+                <span class="small float-right text-muted">11:21 AM</span>
+                <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">
+                <span class="text-success">
+                  <strong>
+                    <i class="fa fa-long-arrow-up"></i>
+                    Status Update</strong>
+                </span>
+                <span class="small float-right text-muted">11:21 AM</span>
+                <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item small" href="#">
+                View all alerts
+              </a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <form class="form-inline my-2 my-lg-0 mr-lg-2">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                  <button class="btn btn-primary" type="button">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </span>
+              </div>
+            </form>
+          </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
               <i class="fa fa-fw fa-sign-out"></i>
-              Cerrar sesion</a>
+              Logout</a>
           </li>
         </ul>
       </div>
     </nav>
+
     <div class="content-wrapper">
 
       <div class="container-fluid">
 
-<div id="elemento">             
-          <!-- Tabla -->
-        <div class="card mb-3">
-          <div class="card-header">
-            <i class="fa fa-table"></i>
-            Nueva Actividad
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-bordered" width="100%" id="dataTable" cellspacing="0">
-                
-                <form>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Agregar Actividad</label>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="input-group">
-                        <span class="input-group-btn">
-                            <button class="btn btn-secondary" style="margin-top: 10px" >Actividad</button>
-                        </span>
-                        <input class="form-control"  v-model="nuevaActividad" style="margin-top: 10px"></input>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="input-group">
-                        <span class="input-group-btn">
-                            <button class="btn btn-secondary" style="margin-top: 10px">Descripción</button>
-                        </span>
-                    <input class="form-control" v-model="nuevaDescripcion" style="margin-top: 10px"></input>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                            <button class="btn btn-secondary" style="margin-top: 10px">Responsable</button>
-                        </span>
-                    <input v-model="nuevoResponsable" class="form-control" style="margin-top: 10px"></input>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="input-group">
-                    <span class="input-group-btn">
-                        <button class="btn btn-secondary" style="margin-top: 10px">Tareas</button>
-                    </span>
-                <input v-model="nuevaTarea" class="form-control" style="margin-top: 10px"></input>
-                </div>
-            </div>
-        </div> 
-        <button type="button" class="btn btn-primary" @click="agregarActividad(nuevaActividad, 
-        nuevoResponsable, nuevaDescripcion, nuevaTarea)" >Agregar Actividad</button>
-       </div>
-      </form>   
-  <div class="card mb-3">
-    <div class="card-header">
-    <H2 align="center">Actividades</H2>
-      <div class="card-body">
-       <div class="table-responsive">
-      <table class="table table-bordered" width="100%" id="dataTable" cellspacing="0">
-        <td scope="row" align="center">Actividad</td>
-            <td scope="row" align="center">Descripción</td>
-                <td scope="row" align="center">Opciones</td>
-                    <tr v-for="(actividades, index) in datos">
-                    <td scope="row" align="center">{{actividades.Actividad}}</td>
-                    <td scope="row" align="center"><small>{{actividades.descripcion}}</small></td>
-                    <td> <button  @click="editar(actividades)">Editar</button>
-                    <button @click="eliminarNombre(index)">eliminar</button>
-                    </td>
-                    </tr>
-            </table>
-       </div>
-      </div>
-       </div>
-         <pre>{{datos | json}}</pre>
-    </div>
-   
+        <!-- Breadcrumbs -->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+          </li>
+          <li class="breadcrumb-item active">My Dashboard</li>
+        </ol>
 
-  
+        <h1>Blank Page</h1>
+
+      </div>
+      <!-- /.container-fluid -->
+
+    </div>
+    <!-- /.content-wrapper -->
+
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright &copy; Your Website 2017</small>
+        </div>
+      </div>
+    </footer>
 
     <!-- Scroll to Top Button -->
     <a class="scroll-to-top rounded" href="#page-top">
@@ -261,11 +294,8 @@
         </div>
       </div>
     </div>
-                 </div>
+
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="./vue.js"></script>
-    <script src="./app.js"></script>
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/popper/popper.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
