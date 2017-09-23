@@ -25,7 +25,7 @@
 
   </head>
 
-  <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <body class="fixed-nav sticky-footer bg-dark" id="page-top">  
     <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
 <script>
   // Initialize Firebase
@@ -38,31 +38,31 @@
     messagingSenderId: "731706199060"
   };
 </script>
-
     <!-- Navigation -->
+  <div id="elemento">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
       <a class="navbar-brand" href="#">Plan de Mejoramiento</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button>
+       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
           <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Dashboard">
-            <a class="nav-link" href="#">
+            <a class="nav-link" @click="mostrar1()">
               <i class="fa fa-fw fa-dashboard"></i>
               <span class="nav-link-text">
                 Dashboard</span>
             </a>
           </li>
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-            <a class="nav-link" href="#">
+            <a class="nav-link" @click="mostrar2()">
               <i class="fa fa-fw fa-area-chart"></i>
               <span class="nav-link-text">
                 Charts</span>
             </a>
           </li>
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-            <a class="nav-link" href="#">
+            <a class="nav-link" @click="mostrar3()">
               <i class="fa fa-fw fa-table"></i>
               <span class="nav-link-text">
                 Tables</span>
@@ -155,11 +155,15 @@
       </div>
     </nav>
     <div class="content-wrapper">
-
       <div class="container-fluid">
-
-<div id="elemento">             
+        <div v-if="ocultar2">
+      <plantilla></plantilla>
+      </div>
+       <div v-if="ocultar3">
+      <plantilla2></plantilla2>
+      </div>
           <!-- Tabla -->
+       <div  v-show="ocultar">
         <div class="card mb-3">
           <div class="card-header">
             <i class="fa fa-table"></i>
@@ -168,117 +172,73 @@
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-bordered" width="100%" id="dataTable" cellspacing="0">
-                
-                <form>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Agregar Actividad</label>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="input-group">
-                        <span class="input-group-btn">
-                            <button class="btn btn-secondary" style="margin-top: 10px" >Actividad</button>
-                        </span>
-                        <input class="form-control"  v-model="nuevaActividad" style="margin-top: 10px"></input>
+                  <form>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4" class="col-form-label">Actividad</label>
+                          <input class="form-control"  v-model="nuevaActividad" style="margin-top: 10px"></input>
                         </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="input-group">
-                        <span class="input-group-btn">
-                            <button class="btn btn-secondary" style="margin-top: 10px">Descripción</button>
-                        </span>
-                    <input class="form-control" v-model="nuevaDescripcion" style="margin-top: 10px"></input>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                            <button class="btn btn-secondary" style="margin-top: 10px">Responsable</button>
-                        </span>
-                    <input v-model="nuevoResponsable" class="form-control" style="margin-top: 10px"></input>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="input-group">
-                    <span class="input-group-btn">
-                        <button class="btn btn-secondary" style="margin-top: 10px">Tareas</button>
-                    </span>
-                <input v-model="nuevaTarea" class="form-control" style="margin-top: 10px"></input>
-                </div>
-            </div>
-        </div> 
-        <button type="button" class="btn btn-primary" @click="agregarActividad(nuevaActividad, 
-        nuevoResponsable, nuevaDescripcion, nuevaTarea)" >Agregar Actividad</button>
-       </div>
-      </form>   
-  <div class="card mb-3">
-    <div class="card-header">
-    <H2 align="center">Actividades</H2>
-      <div class="card-body">
-       <div class="table-responsive">
-      <table class="table table-bordered" width="100%" id="dataTable" cellspacing="0">
-        <td scope="row" align="center">Actividad</td>
-            <td scope="row" align="center">Descripción</td>
-                <td scope="row" align="center">Opciones</td>
-                    <tr v-for="(actividades, index) in datos">
-                    <td scope="row" align="center">{{actividades.Actividad}}</td>
-                    <td scope="row" align="center"><small>{{actividades.descripcion}}</small></td>
-                    <td> <button  @click="editar(actividades)">Editar</button>
-                    <button @click="eliminarNombre(index)">eliminar</button>
-                    </td>
-                    </tr>
-            </table>
-       </div>
-      </div>
-       </div>
-         <pre>{{datos | json}}</pre>
-    </div>
-   
-
-  
-
-    <!-- Scroll to Top Button -->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fa fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Select "Logout" below if you are ready to end your current session.
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
-          </div>
-        </div>
-      </div>
-    </div>
-                 </div>
+                        <div class="form-group col-md-6">
+                          <label for="inputPassword4" class="col-form-label">Descripción</label>
+                          <input class="form-control" v-model="nuevaDescripcion" style="margin-top: 10px"></input>
+                        </div>
+                       <div class="form-group col-md-6">
+                          <label for="inputEmail4" class="col-form-label">Responsable</label>
+                          <input class="form-control"  v-model="nuevoResponsable" style="margin-top: 10px"></input>
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="inputPassword4" class="col-form-label">Tareas</label>
+                          <input v-model="nuevaTarea" class="form-control" style="margin-top: 10px"></input>
+                        </div>
+                        <button class="btn btn-primary"@click="agregarActividad(nuevaActividad,nuevoResponsable,
+                         nuevaDescripcion, nuevaTarea)"> Agregar Actividad </button>
+                      </div>
+                      </form>
+                      </br>                   
+                      <div class="card mb-3">
+                        <div class="card-header">
+                        <H2 align="center">Actividades</H2>
+                          <div class="card-body">
+                          <div class="table-responsive">
+                          <table class="table table-bordered" width="100%" id="dataTable" cellspacing="0">
+                            <td scope="row" align="center">Actividad</td>
+                                <td scope="row" align="center">Descripción</td>
+                                    <td scope="row" align="center">Opciones</td>
+                                        <tr v-for="(actividades, index) in datos">
+                                        <td scope="row" align="center">{{actividades.Actividad}}</td>
+                                        <td scope="row" align="center"><small>{{actividades.descripcion}}</small></td>
+                                        <td> <button  @click="editar(actividades)">Editar</button>
+                                        <button @click="eliminarNombre(index)">eliminar</button>
+                                        </td>
+                                      </tr>
+                                </table>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <pre>{{datos | json}}</pre>
+                  <!-- Scroll to Top Button -->
+                  <a class="scroll-to-top rounded" href="#page-top">
+                    <i class="fa fa-angle-up"></i>
+                  </a>
+              </div>
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="./vue.js"></script>
-    <script src="./app.js"></script>
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/popper/popper.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+            <script src="vendor/jquery/jquery.min.js"></script>
+            <script src="./vue.js"></script>
+            <script src="./app.js"></script>
+            <script src="vendor/jquery/jquery.min.js"></script>
+            <script src="vendor/popper/popper.min.js"></script>
+            <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="vendor/datatables/jquery.dataTables.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+            <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+            <script src="vendor/chart.js/Chart.min.js"></script>
+            <script src="vendor/datatables/jquery.dataTables.js"></script>
+            <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="js/sb-admin.min.js"></script>
+            <script src="js/sb-admin.min.js"></script>
+            </div>
+          </body>
 
-  </body>
-
-</html>
+        </html>
