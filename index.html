@@ -190,7 +190,7 @@
                           <label for="inputPassword4" class="col-form-label">Tareas</label>
                           <input v-model="nuevaTarea" class="form-control" style="margin-top: 10px"></input>
                         </div>
-                        <button class="btn btn-primary"@click="agregarActividad(nuevaActividad,nuevoResponsable,
+                        <button class="btn btn-primary" @click="agregarActividad(nuevaActividad,nuevoResponsable,
                          nuevaDescripcion, nuevaTarea)"> Agregar Actividad </button>
                       </div>
                       </form>
@@ -207,8 +207,8 @@
                                         <tr v-for="(actividades, index) in datos">
                                         <td scope="row" align="center">{{actividades.Actividad}}</td>
                                         <td scope="row" align="center"><small>{{actividades.descripcion}}</small></td>
-                                        <td> <button  @click="editar(actividades)">Editar</button>
-                                        <button @click="eliminarNombre(index)">eliminar</button>
+                                        <td> <button  class="btn btn-primary" @click="editar(actividades)">Editar</button>
+                                        <button  class="btn btn-primary" @click="eliminarNombre(index)">eliminar</button>
                                         </td>
                                       </tr>
                                 </table>
