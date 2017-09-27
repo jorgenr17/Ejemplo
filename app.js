@@ -22,17 +22,25 @@ Vue.component('plantilla2',{
        </div>
        </div>`
 })
-
 firebase.initializeApp(config);
 const dbejemplo = firebase.database();
-new Vue({
+var vm = new Vue({
     el: "#elemento",
     created(){
-       dbejemplo.ref('actividades/').on('value', snapshot => 
-       this.leerDatos(snapshot.val()))
-       dbejemplo.ref('templates/').on('value', snapshot => 
-       this.leerTemplate(snapshot.val()))     
-   },
+        dbejemplo.ref('actividades').on('value', function(snapshot){
+            vm. datos = [];
+            var obj = snapshot.val();
+            for(var info in obj){
+                vm. datos. unshift({
+                    '.key': info,
+                    Actividad: obj[info].Actividad,
+                    Descripción: obj[info].Descripción,
+                    Responsable: obj[info].Responsable,
+                    Tareas: obj[info].Tareas,
+                })
+            }
+        })
+    },
     data:{
         ocultar : true,
         ocultar2 : false,
@@ -41,8 +49,8 @@ new Vue({
         nuevoResponsable:"",
         nuevaDescripcion:"",
         nuevaTarea:"",
+        editandoTarea: null,
         datos: [],
-        templates:[],
     },
 methods:{
     mostrar1: function(){
@@ -67,35 +75,33 @@ methods:{
         }
      },
     agregarActividad: function(actividad, responsable, descripcion, tarea){
-        dbejemplo.ref('actividades/').push({
+    dbejemplo.ref('actividades/').push({
         Actividad: this.nuevaActividad,
-        descripcion: this.nuevaDescripcion
-    })
-        dbejemplo.ref('responsables/').push({
+        Descripción: this.nuevaDescripcion,
         Responsable: this.nuevoResponsable,
-        Tareas:this.nuevaTarea  
+        Tareas: this.nuevaTarea,
+
     })
-},
-   leerDatos: function(datos){
-        this.datos = [];
-       for( let index in datos){
-           this.datos.push(datos[index])    
-       }
-   },
-    leerTemplate: function(templates){
-       for( let index in templates){
-           this.templates.push(templates[index])
-       }
-    },  
-    eliminarNombre: function(index){
-        dbejemplo.ref('actividades/'+ index).remove()
+            this.nuevaActividad=""
+            this.nuevoResponsable=""
+            this.nuevaDescripcion=""
+            this.nuevaTarea=""
+    },
+    eliminar: function(actividades){
+        dbejemplo.ref('actividades/'+ actividades['.key']).remove();
         // this.actividades.splice(index, 1);
     },
-    // editar: function(actividades){
-    //     dbejemplo.ref('actividades/' + Actividad['.index'] ).update({
-    //         Actividad: actividades.Actividad
-    //     })
-    // },
+    editar: function(actividades){
+        dbejemplo.ref('actividades/'+ actividades['.key']).update({
+            Actividad: actividades.Actividad,
+            Descripción: actividades.Descripción,
+            Responsable: actividades.Responsable,
+            Tareas: actividades.Tareas,
+        })
+        // dbejemplo.ref('actividades/' + Actividad['.index'] ).update({
+        //     Actividad: actividades.Actividad
+        // })
+    },
         
 }
 });

@@ -156,7 +156,7 @@
     </nav>
     <div class="content-wrapper">
       <div class="container-fluid">
-        <div v-if="ocultar2">
+      <div v-if="ocultar2">
       <plantilla></plantilla>
       </div>
        <div v-if="ocultar3">
@@ -171,7 +171,6 @@
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-bordered" width="100%" id="dataTable" cellspacing="0">
                   <form>
                       <div class="form-row">
                         <div class="form-group col-md-6">
@@ -185,43 +184,56 @@
                        <div class="form-group col-md-6">
                           <label for="inputEmail4" class="col-form-label">Responsable</label>
                           <input class="form-control"  v-model="nuevoResponsable" style="margin-top: 10px"></input>
-                        </div>
+                       </div>
                         <div class="form-group col-md-6">
                           <label for="inputPassword4" class="col-form-label">Tareas</label>
                           <input v-model="nuevaTarea" class="form-control" style="margin-top: 10px"></input>
                         </div>
                         <button class="btn btn-primary" @click="agregarActividad(nuevaActividad,nuevoResponsable,
                          nuevaDescripcion, nuevaTarea)"> Agregar Actividad </button>
-                      </div>
-                      </form>
-                      </br>                   
-                      <div class="card mb-3">
-                        <div class="card-header">
-                        <H2 align="center">Actividades</H2>
-                          <div class="card-body">
-                          <div class="table-responsive">
-                          <table class="table table-bordered" width="100%" id="dataTable" cellspacing="0">
-                            <td scope="row" align="center">Actividad</td>
-                                <td scope="row" align="center">Descripción</td>
+                       </div>
+                        </form>
+                        </br>                   
+                          <div class="card mb-3">
+                          <div class="card-header">
+                            <H2 align="center">Actividades</H2>
+                            <div class="card-body">
+                              <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" id="dataTable" cellspacing="0">
+                                    <td scope="row" align="center">Actividad</td>
+                                    <td scope="row" align="center">Descripción</td>
+                                    <td scope="row" align="center">Responsable</td>
+                                    <td scope="row" align="center">Tareas</td>
                                     <td scope="row" align="center">Opciones</td>
-                                        <tr v-for="(actividades, index) in datos">
-                                        <td scope="row" align="center">{{actividades.Actividad}}</td>
-                                        <td scope="row" align="center"><small>{{actividades.descripcion}}</small></td>
-                                        <td> <button  class="btn btn-primary" @click="editar(actividades)">Editar</button>
-                                        <button  class="btn btn-primary" @click="eliminarNombre(index)">eliminar</button>
+                                      <tr v-for="(actividades, index) in datos">
+                                        <td scope="row" align="center">{{actividades.Actividad}}<input type="text" class="form-control" 
+                                          v-model="actividades.Actividad" 
+                                          v-show="editandoTarea === index" ></input></td>
+                                        <td scope="row" align="center"><small>{{actividades.Descripción}}</small><input type="text" class="form-control" 
+                                          v-model="actividades.Descripción"
+                                          v-show="editandoTarea === index" ></input></td>
+                                        <td scope="row" align="center">{{actividades.Responsable}}<input type="text" class="form-control" 
+                                          v-model="actividades.Responsable" 
+                                          v-show="editandoTarea === index" ></input></td>
+                                        <td scope="row" align="center">{{actividades.Tareas}}<input type="text" class="form-control" 
+                                          v-model="actividades.Tareas" 
+                                          v-show="editandoTarea === index" ></input></td>
+                                        <td ><button  class="btn btn-primary" v-show="editandoTarea === index" @click="editandoTarea = null, editar(actividades)">
+                                          Guardar</button>
+                                          <button  class="btn btn-primary" @click="editandoTarea = index" v-show="editandoTarea === null">Editar</button>
+                                          <button  class="btn btn-primary" @click="eliminar(actividades)" v-show="editandoTarea === null">eliminar</button>
                                         </td>
                                       </tr>
-                                </table>
+                                  </table>
+                                </div>
                               </div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                      <pre>{{datos | json}}</pre>
+                        <pre>{{$data | json}}</pre>
                   <!-- Scroll to Top Button -->
                   <a class="scroll-to-top rounded" href="#page-top">
                     <i class="fa fa-angle-up"></i>
                   </a>
-              </div>
     <!-- Bootstrap core JavaScript -->
             <script src="vendor/jquery/jquery.min.js"></script>
             <script src="./vue.js"></script>
@@ -229,16 +241,13 @@
             <script src="vendor/jquery/jquery.min.js"></script>
             <script src="vendor/popper/popper.min.js"></script>
             <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-
     <!-- Plugin JavaScript -->
             <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
             <script src="vendor/chart.js/Chart.min.js"></script>
             <script src="vendor/datatables/jquery.dataTables.js"></script>
             <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-
     <!-- Custom scripts for this template -->
             <script src="js/sb-admin.min.js"></script>
             </div>
           </body>
-
         </html>
