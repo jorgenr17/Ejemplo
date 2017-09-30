@@ -50,9 +50,9 @@
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
           <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Dashboard">
             <a class="nav-link" @click="mostrar1()">
-              <i class="fa fa-drivers-license-o"></i>
+              <i class="fa fa-cubes"></i>
               <span class="nav-link-text">
-                Ejemplo</span>
+                Planeador</span>
             </a>
           </li>
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
@@ -149,7 +149,7 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-              <i class="fa fa-fw fa-sign-out"></i>
+              <i class="fa fa-power-off"></i>
               Cerrar sesion</a>
           </li>
         </ul>
@@ -168,70 +168,79 @@
         <div  v-show="ocultar">
         <div class="card mb-3">
           <div class="card-header">
-            <i class="fa fa-table"></i>
+            <i class="fa fa-plus-circle"></i>
             Nueva Actividad
           </div>
           <div class="card-body">
             <div class="table-responsive">
                 <form>
-                      <div class="form-row">
+                      <div class="form-row" align="center">
                         <div class="form-group col-md-6">
-                          <label for="inputEmail4" class="col-form-label">Actividad</label>
-                          <input class="form-control"  v-model="nuevaActividad" style="margin-top: 10px">
+                          <i class="fa fa-bars"></i>
+                          <label for="inputEmail4" class="col-form-label"> Actividad</label>
+                          <input class="form-control"  v-model="nuevaActividad">
                         </div>
                         <div class="form-group col-md-6">
+                          <i class="fa fa-pencil-square-o"></i>
                           <label for="inputPassword4" class="col-form-label">Descripción</label>
-                          <input class="form-control" v-model="nuevaDescripcion" style="margin-top: 10px">
+                          <input class="form-control" v-model="nuevaDescripcion">
                         </div>
                        <div class="form-group col-md-6">
-                          <label for="inputEmail4" class="col-form-label">Responsable</label>
-                          <input class="form-control"  v-model="nuevoResponsable" style="margin-top: 10px">
+                         <i class="fa fa-user-o"></i>
+                         <label for="inputEmail4" class="col-form-label">Responsable</label>
+                         <input class="form-control"  v-model="nuevoResponsable">
                        </div>
                         <div class="form-group col-md-6">
-                          <label for="inputPassword4" class="col-form-label">Tareas</label>
-                          <input v-model="nuevaTarea" class="form-control" style="margin-top: 10px">
+                          <i class="fa fa-calendar"></i>
+                          <label for="inputPassword4" class="col-form-label">Fecha</label>
+                          <input type="date" v-model="fecha" class="form-control">
                         </div>
-                        <button class="btn btn-primary" @click="agregarActividad(nuevaActividad,nuevoResponsable,
-                         nuevaDescripcion, nuevaTarea)"><span class="fa fa-plus-square"></span> Agregar</button>
+                       </div>
+                       </br>
+                       <div align="center" >
+                       <button class="btn btn-primary" @click="agregarActividad(nuevaActividad,nuevoResponsable,
+                       nuevaDescripcion, fecha)"><span class="fa fa-plus-square"></span> Agregar</button>
                        </div>
                 </form>
             </div>
           </div>
            <div class="card mb-3">
               <div class="card-header">
-                <H2 align="center">Actividades</H2>
+                <i class="fa fa-table" aria-hidden="true"></i>
+                Actividades
               </div>
                   <div class="card-body">
                   <div class="table-responsive">
                   <table class="table table-bordered" width="100%" id="dataTable" cellspacing="0">
-                    <td scope="row" align="center">Actividad</td>
-                    <td scope="row" align="center">Descripción</td>
-                    <td scope="row" align="center">Responsable</td>
-                    <td scope="row" align="center">Tareas</td>
-                    <td scope="row" align="center">Progreso</td>
-                    <td scope="row" align="center">Opciones</td>
+                    <td scope="row" align="center"><i class="fa fa-bars"></i> Actividad</td>
+                    <td scope="row" align="center"><i class="fa fa-pencil-square-o"></i> Descripción</td>
+                    <td scope="row" align="center"><i class="fa fa-user-o"></i> Responsable</td>
+                    <td scope="row" align="center"><i class="fa fa-calendar"></i> Fecha</td>
+                    <td scope="row" align="center"><i class="fa fa-wrench" aria-hidden="true"></i> Opciones</td>
                     <tr v-for="(actividades, index) in datos">
-                    <td scope="row" align="center"> {{actividades.Actividad}}<input type="text" class="form-control" 
+                    <td><p v-show="editandoTarea != index" scope="row" align="center">{{actividades.Actividad}}<p><input 
+                    type="text" class="form-control" 
                     v-model="actividades.Actividad" v-show="editandoTarea === index"></td>
-                    <td scope="row" align="center"><small>{{actividades.Descripción}}</small><input type="text" class="form-control" 
-                    v-model="actividades.Descripción"v-show="editandoTarea === index" ></td>
-                    <td scope="row" align="center">{{actividades.Responsable}}<input type="text" class="form-control" 
-                    v-model="actividades.Responsable"v-show="editandoTarea === index" ></td>
-                    <td scope="row" align="center">{{actividades.Tareas}}<input type="text" class="form-control" 
-                    v-model="actividades.Tareas"v-show="editandoTarea === index" ></td>
-                    <td>
-                    <div class="progress">
-                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 80%" 
-                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><input type="text" class="form-control" 
-                    v-model="style"v-show="editandoTarea === index" ></div>
-                    </div>
-                    </td>  
+                    <td><p v-show="editandoTarea != index" scope="row" align="center"scope="row" align="center">
+                    {{actividades.Descripción}}</p><input type="text" class="form-control" 
+                    v-model="actividades.Descripción" v-show="editandoTarea === index" ></td>
+                    <td><p v-show="editandoTarea != index" scope="row" align="center"scope="row" align="center"scope="row" 
+                    align="center">{{actividades.Responsable}}</p><input type="text" class="form-control" 
+                    v-model="actividades.Responsable" v-show="editandoTarea === index" ></td>
+                    <td><p v-show="editandoTarea != index" scope="row" align="center"scope="row" align="center"scope="row" 
+                    align="center">{{actividades.Fecha}}</p><input type="date" class="form-control" 
+                    v-model="actividades.Fecha"v-show="editandoTarea === index" ></td>
+                    <!--opciones-->
+                    <!--Confirmar-->
                     <td align= "center"><button class="btn btn-primary" v-show="editandoTarea === index" 
-                    @click="editandoTarea = null, editar(actividades)">
-                    <span class="fa fa-check"></span></button>
+                    @click="editandoTarea = null, editar(actividades)"><span class="fa fa-check"></span></button>
                     <div align= "center">
+                    <!--Progreso-->
+                    <button  class="btn btn-light" v-show="editandoTarea === null"><i class="fa fa-eye" class="nav-link" data-toggle="modal" data-target="#progreso"></i></button>
+                    <!--Editar-->
                     <button  class="btn btn-primary" @click="editandoTarea = index" v-show="editandoTarea === null">
                     <span class="fa fa-pencil-square-o"></span></button>
+                    <!--Eliminar-->
                     <button  class="btn btn-danger" @click="eliminar(actividades)" v-show="editandoTarea === null">
                     <span class="	fa fa-close"></span></button>
                     </div>
@@ -262,7 +271,8 @@
             </button>
           </div>
           <div class="modal-body">
-            Estas seguro de que deseas cerrar sesión.
+            <i class="fa fa-exclamation-circle"></i>
+            Estas seguro de que deseas cerrar sesión?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -270,7 +280,29 @@
           </div>
         </div>
       </div>
-    </div>                      
+    </div>
+    <!--Progreso modal-->
+    <div class="modal fade" id="progreso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Progreso de actividad</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 80%" 
+                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </div>                
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="./vue.js"></script>

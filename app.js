@@ -1,3 +1,4 @@
+
 Vue.component('plantilla',{
     template:`
     <div>
@@ -37,6 +38,7 @@ var vm = new Vue({
                     Descripción: obj[info].Descripción,
                     Responsable: obj[info].Responsable,
                     Tareas: obj[info].Tareas,
+                    Fecha: obj[info].Fecha,
                 })
             }
         })
@@ -49,6 +51,7 @@ var vm = new Vue({
         nuevoResponsable:"",
         nuevaDescripcion:"",
         nuevaTarea:"",
+        fecha:"",
         style:"",
         editandoTarea: null,
         datos: [],
@@ -75,8 +78,9 @@ methods:{
         this.ocultar3 = true         
         }
      },
-    agregarActividad: function(actividad, responsable, descripcion, tarea){
-    if(this.nuevaActividad == "" && this.nuevaDescripcion == "" && this.nuevoResponsable == "" && this.nuevaTarea == ""){
+    agregarActividad: function(actividad, responsable, descripcion, tarea, fecha){
+    if(this.nuevaActividad == "" && this.nuevaDescripcion == "" && this.nuevoResponsable == "" && this.nuevaTarea == ""
+    && this.fecha == ""){
     alert('¡Por favor llene los datos solicitados!')
     }
     else{
@@ -84,17 +88,18 @@ methods:{
         Actividad: this.nuevaActividad,
         Descripción: this.nuevaDescripcion,
         Responsable: this.nuevoResponsable,
-        Tareas: this.nuevaTarea,    
+        Tareas: this.nuevaTarea,
+        Fecha: this.fecha,    
     })
             this.nuevaActividad=""
             this.nuevoResponsable=""
             this.nuevaDescripcion=""
             this.nuevaTarea=""
+            this.fecha=""
     }
     },
     eliminar: function(actividades){
         dbejemplo.ref('actividades/'+ actividades['.key']).remove();
-        // this.actividades.splice(index, 1);
     },
     editar: function(actividades){
         dbejemplo.ref('actividades/'+ actividades['.key']).update({
@@ -102,6 +107,7 @@ methods:{
             Descripción: actividades.Descripción,
             Responsable: actividades.Responsable,
             Tareas: actividades.Tareas,
+            Fecha: actividades.Fecha
         })
     },
 }
