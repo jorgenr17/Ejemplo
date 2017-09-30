@@ -76,17 +76,21 @@ methods:{
         }
      },
     agregarActividad: function(actividad, responsable, descripcion, tarea){
-    dbejemplo.ref('actividades/').push({
+    if(this.nuevaActividad == "" && this.nuevaDescripcion == "" && this.nuevoResponsable == "" && this.nuevaTarea == ""){
+    alert('¡Por favor llene los datos solicitados!')
+    }
+    else{
+        dbejemplo.ref('actividades/').push({
         Actividad: this.nuevaActividad,
         Descripción: this.nuevaDescripcion,
         Responsable: this.nuevoResponsable,
-        Tareas: this.nuevaTarea,
-
+        Tareas: this.nuevaTarea,    
     })
             this.nuevaActividad=""
             this.nuevoResponsable=""
             this.nuevaDescripcion=""
             this.nuevaTarea=""
+    }
     },
     eliminar: function(actividades){
         dbejemplo.ref('actividades/'+ actividades['.key']).remove();
