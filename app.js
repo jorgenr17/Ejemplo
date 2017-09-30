@@ -49,6 +49,7 @@ var vm = new Vue({
         nuevoResponsable:"",
         nuevaDescripcion:"",
         nuevaTarea:"",
+        style:"",
         editandoTarea: null,
         datos: [],
     },
@@ -98,10 +99,6 @@ methods:{
             Responsable: actividades.Responsable,
             Tareas: actividades.Tareas,
         })
-        // dbejemplo.ref('actividades/' + Actividad['.index'] ).update({
-        //     Actividad: actividades.Actividad
-        // })
     },
-        
 }
 });
