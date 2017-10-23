@@ -1,15 +1,3 @@
-Vue.component('plantilla2',{
-    template:`
-    <div>
-    <div class="card mb-3">
-    <div class="card-header">
-    <H2 align="center">Acreditación en Informática</H2>
-      <div class="card-body">
-       <p>Esta es la conceptualización de Acreditaión en la Liceniatura en Informática y Medios Audiovisuales.</p>
-      </div>
-       </div>
-       </div>`
-})
 firebase.initializeApp(config);
 const dbejemplo = firebase.database(),
       auth = firebase.auth();
@@ -455,13 +443,13 @@ Vue.component('plantilla',{
                         mientras que el cierre queda por debajo de la declaración.</p>
                         <h6>Ejemplos:</h6>
                         <br></br>
-                        <i class="fa fa-check-circle">generarTablaDeDatos(){
+                        <i class="fa fa-check-circle"> generarTablaDeDatos(){
                         }</i>
                         <br></br>
-                        <i class="fa fa-check-circle">listaDeNombres(){
+                        <i class="fa fa-check-circle"> listaDeNombres(){
                         }</i>
                         <br></br>	
-                        <i class="fa fa-check-circle">determinarAumentoSueldo(){
+                        <i class="fa fa-check-circle"> determinarAumentoSueldo(){
                         }</i>
                         <br></br>
                         <h6>Definición de Clases</h6>
@@ -481,16 +469,16 @@ Vue.component('plantilla',{
                         Nota: si son mas de dos elementos dividirlo en varias líneas.</p>
                         <p align="justify"><i class="fa fa-check-circle"></i> En la última línea cierre la función, objeto, etc, sin espacio de sangría.</p>
                         <h6>Ejemplo:</h6>
-                        <pre><i class="fa fa-check-circle">var persona = {
-                            primerNombre: "John",
-                        apellido: "Martínez",
-                            edad: 50,
-                        colorOjos: "Marrón"
-                        };</i></pre>
-                        <pre><i class="fa fa-check-circle">for (i = 0; i < 5; i++) {
+                        <pre><i class="fa fa-check-circle"> var persona = {
+                             primerNombre: "John",
+                             apellido: "Martínez",
+                             edad: 50,
+                             colorOjos: "Marrón"
+                           };</i></pre>
+                        <pre><i class="fa fa-check-circle"> for (i = 0; i < 5; i++) {
                             x += i;
                         }</i></pre>
-                        <pre><i class="fa fa-check-circle">if (tiempo < 20) {
+                        <pre><i class="fa fa-check-circle"> if (tiempo < 20) {
                                 saludo = "buenos días";
                         } else {
                                     saludo = "buenas tardes";
