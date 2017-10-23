@@ -23,6 +23,7 @@
   </head>
 
   <body class="bg-dark">
+     <div id="elemento">
 
     <div class="container">
 
@@ -37,33 +38,33 @@
               <div class="form-row">
                 <div class="col-md-6">
                   <label for="exampleInputName">Nombre</label>
-                  <input type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp" placeholder="Ingrese su nombre">
+                  <input type="text" class="form-control" v-model="nombre" aria-describedby="nameHelp" placeholder="Ingrese su nombre">
                 </div>
                 <div class="col-md-6">
                   <label for="exampleInputLastName">Apellido</label>
-                  <input type="text" class="form-control" id="exampleInputLastName" aria-describedby="nameHelp" 
+                  <input type="text" class="form-control"  v-model="apellido" aria-describedby="nameHelp" 
                   placeholder="Ingrese su apellido">
                 </div>
               </div>
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">Ingrese su correo electrónico</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+              <input type="email" class="form-control"  v-model="email" aria-describedby="emailHelp" 
               placeholder="Ingrese su correo electrónico">
             </div>
             <div class="form-group">
               <div class="form-row">
                 <div class="col-md-6">
                   <label for="exampleInputPassword1">Contraseña</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+                  <input type="password" class="form-control"  v-model="password" placeholder="Contraseña">
                 </div>
                 <div class="col-md-6">
                   <label for="exampleConfirmPassword">Confirmar contraseña</label>
-                  <input type="password" class="form-control" id="exampleConfirmPassword" placeholder="Confirmar contraseña">
+                  <input type="password" class="form-control"  v-model="cPassword" placeholder="Confirmar contraseña">
                 </div>
               </div>
             </div>
-            <a class="btn btn-primary btn-block" href="login.html">Registrarme</a>
+            <a class="btn btn-primary btn-block" @click="crearUsuario(nombre, apellido, email, password, cPassword)" href="login.html">Registrarme</a>
           </form>
           <div class="text-center">
             <a class="d-block small mt-3" href="login.html">Inicio de sesión</a>
@@ -72,11 +73,12 @@
         </div>
       </div>
     </div>
-
+     </div>
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/popper/popper.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./app.js"></script>
 
   </body>
 

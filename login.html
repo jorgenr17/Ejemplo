@@ -23,6 +23,19 @@
   </head>
 
   <body class="bg-dark">
+        <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDCYmNnJIVEPcWKdd8CZJUivYdV2MVKpMM",
+    authDomain: "dbejemplo.firebaseapp.com",
+    databaseURL: "https://dbejemplo.firebaseio.com",
+    projectId: "dbejemplo",
+    storageBucket: "",
+    messagingSenderId: "731706199060"
+  };
+</script>
+    <div id="elemento">
 
     <div class="container">
 
@@ -35,7 +48,7 @@
           <form>
             <div class="form-group">
               <label for="exampleInputEmail1">Correo electrónico</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+              <input type="email" class="form-control" v-model="email" aria-describedby="emailHelp" 
               placeholder="Ingrese correo electronico">
             </div>
             <div class="form-group">
@@ -59,11 +72,13 @@
         </div>
       </div>
     </div>
+    </div>
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/popper/popper.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./app.js"></script>
 
   </body>
 
